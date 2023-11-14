@@ -8,14 +8,15 @@ namespace QLThuoc.Model
 {
     internal class ChiTietPhieuNhap
     {
-        private PhieuNhap maPhieuNhap;
-        private Thuoc maThuoc;
+        private string maPhieuNhap;
+        private string maThuoc;
         private int soLuong;
         private float donGia;
 
-        public ChiTietPhieuNhap() { }
 
-        public ChiTietPhieuNhap(PhieuNhap maPhieuNhap, Thuoc maThuoc, int soLuong, float donGia)
+        public ChiTietPhieuNhap(string maPhieuNhap) { }
+
+        public ChiTietPhieuNhap(string maPhieuNhap, string maThuoc, int soLuong, float donGia)
         {
             this.maPhieuNhap = maPhieuNhap;
             this.maThuoc = maThuoc;
@@ -23,14 +24,14 @@ namespace QLThuoc.Model
             this.donGia = donGia;
         }
 
-        public PhieuNhap getMaPhieuNhap() { return maPhieuNhap; }
-        public Thuoc getMaThuoc() { return maThuoc; }
+        public string getMaPhieuNhap() { return maPhieuNhap; }
+        public string getMaThuoc() { return maThuoc; }
         public int getSoLuong() { return soLuong; }
         public float getDonGia() { return donGia; }
 
-        public void setMaPhieuNhap (PhieuNhap phieuNhap) { this.maPhieuNhap = maPhieuNhap; }
-        public void setMaThuoc (Thuoc maThuoc) { this.maThuoc = maThuoc; }
-        public void setSoLuong (int soLuong) { this.soLuong = soLuong; }
-        public void setDonGia (float donGia) { this.donGia = donGia; }
+        public void setMaPhieuNhap(string maPhieuNhap) { this.maPhieuNhap = maPhieuNhap; }
+        public void setMaThuoc(string maThuoc) { this.maThuoc = maThuoc; }
+        public void setSoLuong(int soLuong) { this.soLuong = soLuong; }
+        public void setDonGia(float donGia) { this.donGia = donGia; }
     }
 }

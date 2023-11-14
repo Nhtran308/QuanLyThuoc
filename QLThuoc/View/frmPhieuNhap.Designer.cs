@@ -43,8 +43,7 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            btnPhieuNhapSave = new Button();
-            btnPhieuNhapCancel = new Button();
+            btnPhieuNhapCreate = new Button();
             btnPhieuNhapExit = new Button();
             txtMaPhieu = new TextBox();
             txtMaNhaCungCap = new TextBox();
@@ -60,7 +59,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 28.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(268, 9);
+            label1.Location = new Point(275, 9);
             label1.Name = "label1";
             label1.Size = new Size(274, 62);
             label1.TabIndex = 0;
@@ -70,7 +69,7 @@
             // 
             dgvPhieuNhap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPhieuNhap.Columns.AddRange(new DataGridViewColumn[] { maThuoc, tenThuoc, donViTinh, soLuong, donGia, Column1 });
-            dgvPhieuNhap.Location = new Point(12, 273);
+            dgvPhieuNhap.Location = new Point(12, 310);
             dgvPhieuNhap.Name = "dgvPhieuNhap";
             dgvPhieuNhap.RowHeadersWidth = 51;
             dgvPhieuNhap.RowTemplate.Height = 29;
@@ -127,7 +126,7 @@
             // 
             lblMaThuoc.AutoSize = true;
             lblMaThuoc.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblMaThuoc.Location = new Point(12, 81);
+            lblMaThuoc.Location = new Point(14, 112);
             lblMaThuoc.Name = "lblMaThuoc";
             lblMaThuoc.Size = new Size(69, 20);
             lblMaThuoc.TabIndex = 20;
@@ -137,7 +136,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(366, 81);
+            label2.Location = new Point(466, 112);
             label2.Name = "label2";
             label2.Size = new Size(78, 20);
             label2.TabIndex = 21;
@@ -147,7 +146,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(12, 132);
+            label3.Location = new Point(14, 163);
             label3.Name = "label3";
             label3.Size = new Size(127, 20);
             label3.TabIndex = 22;
@@ -157,7 +156,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(366, 132);
+            label4.Location = new Point(466, 163);
             label4.Name = "label4";
             label4.Size = new Size(104, 20);
             label4.TabIndex = 23;
@@ -167,7 +166,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(366, 234);
+            label5.Location = new Point(466, 265);
             label5.Name = "label5";
             label5.Size = new Size(85, 20);
             label5.TabIndex = 24;
@@ -177,7 +176,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(12, 234);
+            label6.Location = new Point(14, 265);
             label6.Name = "label6";
             label6.Size = new Size(117, 20);
             label6.TabIndex = 25;
@@ -187,35 +186,25 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(12, 186);
+            label7.Location = new Point(14, 217);
             label7.Name = "label7";
             label7.Size = new Size(80, 20);
             label7.TabIndex = 26;
             label7.Text = "Nhân viên";
             // 
-            // btnPhieuNhapSave
+            // btnPhieuNhapCreate
             // 
-            btnPhieuNhapSave.Location = new Point(247, 492);
-            btnPhieuNhapSave.Name = "btnPhieuNhapSave";
-            btnPhieuNhapSave.Size = new Size(94, 29);
-            btnPhieuNhapSave.TabIndex = 27;
-            btnPhieuNhapSave.Text = "Lưu";
-            btnPhieuNhapSave.UseVisualStyleBackColor = true;
-            btnPhieuNhapSave.Click += btnPhieuNhapSave_Click;
-            // 
-            // btnPhieuNhapCancel
-            // 
-            btnPhieuNhapCancel.Location = new Point(448, 492);
-            btnPhieuNhapCancel.Name = "btnPhieuNhapCancel";
-            btnPhieuNhapCancel.Size = new Size(94, 29);
-            btnPhieuNhapCancel.TabIndex = 28;
-            btnPhieuNhapCancel.Text = "Hủy";
-            btnPhieuNhapCancel.UseVisualStyleBackColor = true;
-            btnPhieuNhapCancel.Click += btnPhieuNhapCancel_Click;
+            btnPhieuNhapCreate.Location = new Point(538, 512);
+            btnPhieuNhapCreate.Name = "btnPhieuNhapCreate";
+            btnPhieuNhapCreate.Size = new Size(94, 29);
+            btnPhieuNhapCreate.TabIndex = 27;
+            btnPhieuNhapCreate.Text = "Tạo";
+            btnPhieuNhapCreate.UseVisualStyleBackColor = true;
+            btnPhieuNhapCreate.Click += btnPhieuNhapCreate_Click;
             // 
             // btnPhieuNhapExit
             // 
-            btnPhieuNhapExit.Location = new Point(647, 492);
+            btnPhieuNhapExit.Location = new Point(701, 512);
             btnPhieuNhapExit.Name = "btnPhieuNhapExit";
             btnPhieuNhapExit.Size = new Size(94, 29);
             btnPhieuNhapExit.TabIndex = 29;
@@ -226,7 +215,7 @@
             // txtMaPhieu
             // 
             txtMaPhieu.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtMaPhieu.Location = new Point(142, 78);
+            txtMaPhieu.Location = new Point(144, 109);
             txtMaPhieu.Name = "txtMaPhieu";
             txtMaPhieu.PlaceholderText = "Số phiếu";
             txtMaPhieu.Size = new Size(218, 27);
@@ -236,16 +225,17 @@
             // txtMaNhaCungCap
             // 
             txtMaNhaCungCap.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtMaNhaCungCap.Location = new Point(142, 129);
+            txtMaNhaCungCap.Location = new Point(144, 160);
             txtMaNhaCungCap.Name = "txtMaNhaCungCap";
             txtMaNhaCungCap.PlaceholderText = "Mã nhà cung cấp";
             txtMaNhaCungCap.Size = new Size(218, 27);
             txtMaNhaCungCap.TabIndex = 31;
+            txtMaNhaCungCap.TextChanged += txtMaNhaCungCap_TextChanged;
             // 
             // txtMaHopDong
             // 
             txtMaHopDong.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtMaHopDong.Location = new Point(476, 78);
+            txtMaHopDong.Location = new Point(576, 109);
             txtMaHopDong.Name = "txtMaHopDong";
             txtMaHopDong.PlaceholderText = "Số hợp đồng";
             txtMaHopDong.Size = new Size(218, 27);
@@ -254,7 +244,7 @@
             // txtNhaCungCap
             // 
             txtNhaCungCap.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtNhaCungCap.Location = new Point(476, 129);
+            txtNhaCungCap.Location = new Point(576, 160);
             txtNhaCungCap.Name = "txtNhaCungCap";
             txtNhaCungCap.PlaceholderText = "Tên nhà cung cấp";
             txtNhaCungCap.Size = new Size(218, 27);
@@ -263,7 +253,7 @@
             // txtNguoiNhap
             // 
             txtNguoiNhap.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtNguoiNhap.Location = new Point(142, 183);
+            txtNguoiNhap.Location = new Point(144, 214);
             txtNguoiNhap.Name = "txtNguoiNhap";
             txtNguoiNhap.PlaceholderText = "Nhân viên";
             txtNguoiNhap.Size = new Size(218, 27);
@@ -272,7 +262,7 @@
             // txtNgayHopDong
             // 
             txtNgayHopDong.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtNgayHopDong.Location = new Point(142, 231);
+            txtNgayHopDong.Location = new Point(144, 262);
             txtNgayHopDong.Name = "txtNgayHopDong";
             txtNgayHopDong.PlaceholderText = "Tháng /Ngày /Năm";
             txtNgayHopDong.Size = new Size(218, 27);
@@ -281,7 +271,7 @@
             // txtNgayNhap
             // 
             txtNgayNhap.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtNgayNhap.Location = new Point(476, 231);
+            txtNgayNhap.Location = new Point(576, 262);
             txtNgayNhap.Name = "txtNgayNhap";
             txtNgayNhap.PlaceholderText = "Tháng /Ngày /Năm";
             txtNgayNhap.Size = new Size(218, 27);
@@ -301,8 +291,7 @@
             Controls.Add(txtMaNhaCungCap);
             Controls.Add(txtMaPhieu);
             Controls.Add(btnPhieuNhapExit);
-            Controls.Add(btnPhieuNhapCancel);
-            Controls.Add(btnPhieuNhapSave);
+            Controls.Add(btnPhieuNhapCreate);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -312,9 +301,11 @@
             Controls.Add(lblMaThuoc);
             Controls.Add(dgvPhieuNhap);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmPhieuNhap";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Phiếu Nhập";
+            KeyDown += frmPhieuNhap_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvPhieuNhap).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -331,8 +322,7 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Button btnPhieuNhapSave;
-        private Button btnPhieuNhapCancel;
+        private Button btnPhieuNhapCreate;
         private Button btnPhieuNhapExit;
         private TextBox txtMaPhieu;
         private TextBox txtMaNhaCungCap;

@@ -51,7 +51,14 @@ namespace QLThuoc.Controller
             return lstThuoc;
         }
 
-        public bool CTPNInsert(System.Windows.Forms.TextBox txtMaPhieu, DataGridView dgvPhieuNhap)
+        public bool CTPNInsert(System.Windows.Forms.TextBox txtMaPhieu, 
+            System.Windows.Forms.TextBox txtMaHopDong, 
+            System.Windows.Forms.TextBox txtMaNhaCungCap, 
+            System.Windows.Forms.TextBox txtNhaCungCap, 
+            System.Windows.Forms.TextBox txtNguoiNhap, 
+            System.Windows.Forms.TextBox txtNgayHopDong, 
+            System.Windows.Forms.TextBox txtNgayNhap, 
+            DataGridView dgvPhieuNhap)
         {
             SqlConnection conn = DataHelper.getConnection();
             try
@@ -59,16 +66,28 @@ namespace QLThuoc.Controller
                 for (int i = 0; i < dgvPhieuNhap.Rows.Count-1; i++)
                 {
                     conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO ChiTietPhieuNhap(MaPhieu, MaThuoc, SoLuong, DonGia) " +
-                "VALUES (" +
-                "(SELECT MaPhieu FROM PhieuNhap WHERE MaPhieu = '" + txtMaPhieu.Text + "'), " +
-                "(SELECT MaThuoc FROM Thuoc WHERE MaThuoc = '" + dgvPhieuNhap.Rows[i].Cells[0].Value + "'), " +
-                "'" + dgvPhieuNhap.Rows[i].Cells[3].Value + "', " +
-                "'" + dgvPhieuNhap.Rows[i].Cells[4].Value + "')", conn);
+
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO PhieuNhap(MaPhieu, MaHopDong, MaNhaCungCap, TenNhaCungCap, NguoiNhap, NgayHopDong, NgayNhap) " +
+                    "VALUES ('" + txtMaPhieu.Text + "','" 
+                    + txtMaHopDong.Text + "','"
+                    + txtMaNhaCungCap.Text + "',N'"
+                    + txtNhaCungCap.Text + "',N'"
+                    + txtNguoiNhap.Text + "','"
+                    + txtNgayHopDong.Text + "','"
+                    + txtNgayNhap.Text + "') " +
+                    "INSERT INTO ChiTietPhieuNhap(MaPhieu, MaThuoc, SoLuong, DonGia) " +
+                    "VALUES (" +
+                    "(SELECT MaPhieu FROM PhieuNhap WHERE MaPhieu = '" + txtMaPhieu.Text + "'), " +
+                    "(SELECT MaThuoc FROM Thuoc WHERE MaThuoc = '" + dgvPhieuNhap.Rows[i].Cells[0].Value + "'), " +
+                    "'" + dgvPhieuNhap.Rows[i].Cells[3].Value + "', " +
+                    "'" + dgvPhieuNhap.Rows[i].Cells[4].Value + "')", conn);
+
+
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
-                MessageBox.Show("Lưu thành công", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Tạo thành công", "Thông báo", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
@@ -84,7 +103,6 @@ namespace QLThuoc.Controller
         public static void HienThiCombobox(DataGridView dgvPhieuNhap)
         {
             SqlConnection conn = DataHelper.getConnection();
-            
             for (int i = 0; i < dgvPhieuNhap.Rows.Count; i++)
             {
                 conn.Open();
@@ -104,7 +122,7 @@ namespace QLThuoc.Controller
 
         public static void HienThiPhieuNhap(System.Windows.Forms.TextBox txtMaPhieu, 
             System.Windows.Forms.TextBox txtMaHopDong,
-            System.Windows.Forms.TextBox txtMaNhaCungcap,
+            System.Windows.Forms.TextBox txtMaNhaCungCap,
             System.Windows.Forms.TextBox txtNhaCungCap,
             System.Windows.Forms.TextBox txtNguoiNhap,
             System.Windows.Forms.TextBox txtNgayHopDong,
@@ -119,7 +137,7 @@ namespace QLThuoc.Controller
             {
                 txtMaPhieu.Text = reader["MaPhieu"].ToString();
                 txtMaHopDong.Text = reader["MaHopDong"].ToString();
-                txtMaNhaCungcap.Text = reader["MaNhaCungCap"].ToString();
+                txtMaNhaCungCap.Text = reader["MaNhaCungCap"].ToString();
                 txtNhaCungCap.Text = reader["TenNhaCungCap"].ToString();
                 txtNguoiNhap.Text = reader["NguoiNhap"].ToString();
                 txtNgayHopDong.Text = Convert.ToDateTime(reader["NgayHopDong"]).ToString("dd/MM/yyyy");
@@ -129,11 +147,25 @@ namespace QLThuoc.Controller
             {
                
                 txtMaHopDong.Text = "";
-                txtMaNhaCungcap.Text = "";
+                txtMaNhaCungCap.Text = "";
                 txtNhaCungCap.Text = "";
                 txtNguoiNhap.Text = "";
                 txtNgayHopDong.Text = "";
                 txtNgayNhap.Text = "";
+            }
+            conn.Close();
+        }
+
+        public static void HienThiNhaCungCap(System.Windows.Forms.TextBox txtMaNhaCungCap, System.Windows.Forms.TextBox txtNhaCungCap)
+        {
+            SqlConnection conn = DataHelper.getConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT MaNhaCungCap, TenNhaCungCap FROM NhaCungCap WHERE MaNhaCungCap = N'" + txtMaNhaCungCap.Text + "'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                txtMaNhaCungCap.Text = reader["MaNhaCungCap"].ToString();
+                txtNhaCungCap.Text = reader["TenNhaCungCap"].ToString();
             }
             conn.Close();
         }

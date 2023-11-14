@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnThuocLoad = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThuoc));
             lblMaThuoc = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -43,7 +43,6 @@
             btnThuocFind = new Button();
             btnThuocDelete = new Button();
             btnThuocEdit = new Button();
-            btnThuocCancel = new Button();
             btnThuocExit = new Button();
             dgvThuoc = new DataGridView();
             maThuoc = new DataGridViewTextBoxColumn();
@@ -54,21 +53,11 @@
             ((System.ComponentModel.ISupportInitialize)dgvThuoc).BeginInit();
             SuspendLayout();
             // 
-            // btnThuocLoad
-            // 
-            btnThuocLoad.Location = new Point(387, 328);
-            btnThuocLoad.Name = "btnThuocLoad";
-            btnThuocLoad.Size = new Size(94, 29);
-            btnThuocLoad.TabIndex = 1;
-            btnThuocLoad.Text = "Hiển thị";
-            btnThuocLoad.UseVisualStyleBackColor = true;
-            btnThuocLoad.Click += btnThuocLoad_Click;
-            // 
             // lblMaThuoc
             // 
             lblMaThuoc.AutoSize = true;
             lblMaThuoc.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblMaThuoc.Location = new Point(12, 337);
+            lblMaThuoc.Location = new Point(12, 9);
             lblMaThuoc.Name = "lblMaThuoc";
             lblMaThuoc.Size = new Size(74, 20);
             lblMaThuoc.TabIndex = 2;
@@ -78,7 +67,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(12, 374);
+            label2.Location = new Point(344, 9);
             label2.Name = "label2";
             label2.Size = new Size(76, 20);
             label2.TabIndex = 3;
@@ -88,7 +77,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(12, 414);
+            label3.Location = new Point(12, 50);
             label3.Name = "label3";
             label3.Size = new Size(85, 20);
             label3.TabIndex = 4;
@@ -98,7 +87,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(12, 455);
+            label4.Location = new Point(344, 50);
             label4.Name = "label4";
             label4.Size = new Size(70, 20);
             label4.TabIndex = 5;
@@ -108,7 +97,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(12, 496);
+            label5.Location = new Point(528, 50);
             label5.Name = "label5";
             label5.Size = new Size(63, 20);
             label5.TabIndex = 6;
@@ -117,7 +106,7 @@
             // txtMaThuoc
             // 
             txtMaThuoc.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtMaThuoc.Location = new Point(129, 330);
+            txtMaThuoc.Location = new Point(104, 6);
             txtMaThuoc.Name = "txtMaThuoc";
             txtMaThuoc.PlaceholderText = "Mã thuốc";
             txtMaThuoc.Size = new Size(218, 27);
@@ -126,16 +115,16 @@
             // txtTenThuoc
             // 
             txtTenThuoc.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtTenThuoc.Location = new Point(129, 367);
+            txtTenThuoc.Location = new Point(426, 6);
             txtTenThuoc.Name = "txtTenThuoc";
             txtTenThuoc.PlaceholderText = "Tên thuốc";
-            txtTenThuoc.Size = new Size(218, 27);
+            txtTenThuoc.Size = new Size(316, 27);
             txtTenThuoc.TabIndex = 8;
             // 
             // txtDonViTinh
             // 
             txtDonViTinh.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtDonViTinh.Location = new Point(129, 407);
+            txtDonViTinh.Location = new Point(104, 47);
             txtDonViTinh.Name = "txtDonViTinh";
             txtDonViTinh.PlaceholderText = "Đơn vị tính";
             txtDonViTinh.Size = new Size(218, 27);
@@ -144,24 +133,24 @@
             // txtSoLuong
             // 
             txtSoLuong.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtSoLuong.Location = new Point(129, 448);
+            txtSoLuong.Location = new Point(426, 47);
             txtSoLuong.Name = "txtSoLuong";
             txtSoLuong.PlaceholderText = "Số lượng";
-            txtSoLuong.Size = new Size(218, 27);
+            txtSoLuong.Size = new Size(67, 27);
             txtSoLuong.TabIndex = 10;
             // 
             // txtDonGia
             // 
             txtDonGia.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            txtDonGia.Location = new Point(129, 489);
+            txtDonGia.Location = new Point(620, 47);
             txtDonGia.Name = "txtDonGia";
             txtDonGia.PlaceholderText = "Đơn giá";
-            txtDonGia.Size = new Size(218, 27);
+            txtDonGia.Size = new Size(122, 27);
             txtDonGia.TabIndex = 11;
             // 
             // btnThuocAdd
             // 
-            btnThuocAdd.Location = new Point(387, 405);
+            btnThuocAdd.Location = new Point(12, 412);
             btnThuocAdd.Name = "btnThuocAdd";
             btnThuocAdd.Size = new Size(94, 29);
             btnThuocAdd.TabIndex = 12;
@@ -171,7 +160,7 @@
             // 
             // btnThuocFind
             // 
-            btnThuocFind.Location = new Point(546, 328);
+            btnThuocFind.Location = new Point(528, 412);
             btnThuocFind.Name = "btnThuocFind";
             btnThuocFind.Size = new Size(94, 29);
             btnThuocFind.TabIndex = 13;
@@ -181,7 +170,7 @@
             // 
             // btnThuocDelete
             // 
-            btnThuocDelete.Location = new Point(546, 405);
+            btnThuocDelete.Location = new Point(177, 412);
             btnThuocDelete.Name = "btnThuocDelete";
             btnThuocDelete.Size = new Size(94, 29);
             btnThuocDelete.TabIndex = 14;
@@ -191,7 +180,7 @@
             // 
             // btnThuocEdit
             // 
-            btnThuocEdit.Location = new Point(387, 487);
+            btnThuocEdit.Location = new Point(354, 412);
             btnThuocEdit.Name = "btnThuocEdit";
             btnThuocEdit.Size = new Size(94, 29);
             btnThuocEdit.TabIndex = 15;
@@ -199,19 +188,9 @@
             btnThuocEdit.UseVisualStyleBackColor = true;
             btnThuocEdit.Click += btnThuocEdit_Click;
             // 
-            // btnThuocCancel
-            // 
-            btnThuocCancel.Location = new Point(546, 487);
-            btnThuocCancel.Name = "btnThuocCancel";
-            btnThuocCancel.Size = new Size(94, 29);
-            btnThuocCancel.TabIndex = 16;
-            btnThuocCancel.Text = "Hủy";
-            btnThuocCancel.UseVisualStyleBackColor = true;
-            btnThuocCancel.Click += btnThuocCancel_Click;
-            // 
             // btnThuocExit
             // 
-            btnThuocExit.Location = new Point(701, 487);
+            btnThuocExit.Location = new Point(701, 412);
             btnThuocExit.Name = "btnThuocExit";
             btnThuocExit.Size = new Size(94, 29);
             btnThuocExit.TabIndex = 17;
@@ -223,7 +202,7 @@
             // 
             dgvThuoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvThuoc.Columns.AddRange(new DataGridViewColumn[] { maThuoc, tenThuoc, donViTinh, soLuong, donGia });
-            dgvThuoc.Location = new Point(12, 12);
+            dgvThuoc.Location = new Point(12, 97);
             dgvThuoc.Name = "dgvThuoc";
             dgvThuoc.RowHeadersWidth = 51;
             dgvThuoc.RowTemplate.Height = 29;
@@ -271,10 +250,9 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(807, 553);
+            ClientSize = new Size(807, 453);
             Controls.Add(dgvThuoc);
             Controls.Add(btnThuocExit);
-            Controls.Add(btnThuocCancel);
             Controls.Add(btnThuocEdit);
             Controls.Add(btnThuocDelete);
             Controls.Add(btnThuocFind);
@@ -289,17 +267,18 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(lblMaThuoc);
-            Controls.Add(btnThuocLoad);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmThuoc";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Thuốc";
+            KeyDown += frmThuoc_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvThuoc).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button btnThuocLoad;
         private Label lblMaThuoc;
         private Label label2;
         private Label label3;
@@ -314,9 +293,8 @@
         private Button btnThuocFind;
         private Button btnThuocDelete;
         private Button btnThuocEdit;
-        private Button btnThuocCancel;
         private Button btnThuocExit;
-        private DataGridView dgvThuoc;
+        public DataGridView dgvThuoc;
         private DataGridViewTextBoxColumn maThuoc;
         private DataGridViewTextBoxColumn tenThuoc;
         private DataGridViewTextBoxColumn donViTinh;

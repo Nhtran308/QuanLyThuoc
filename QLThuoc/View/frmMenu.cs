@@ -7,28 +7,31 @@ namespace QLThuoc
 {
     public partial class frmMenu : Form
     {
+        ThuocController thuocController;
+        List<Thuoc> lstThuoc;
         public frmMenu()
         {
             InitializeComponent();
+            thuocController = new ThuocController();
         }
 
         private void thuốcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmThuoc frmthuoc = new frmThuoc();
-            this.Hide();
-            frmthuoc.btnThuocLoad_Click(sender, e);
+            frmthuoc.ThuocLoad(sender, e);
+            frmthuoc.dgvThuoc.ReadOnly = true;
             frmthuoc.Show();
         }
 
         private void nhàThuốcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmNhaCungCap frmnhacungcap = new frmNhaCungCap();
-            this.Hide();
-            frmnhacungcap.btnNCCLoad_Click(sender, e);
+            frmnhacungcap.NCCLoad(sender, e);
+            frmnhacungcap.dgvNhaCungCap.ReadOnly = true;
             frmnhacungcap.Show();
         }
 
-        private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        private void thêmPhiếuNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPhieuNhap frmPhieuNhap = new frmPhieuNhap();
             DataGridViewComboBoxColumn combo = (DataGridViewComboBoxColumn)frmPhieuNhap.dgvPhieuNhap.Columns["maThuoc"];
@@ -40,9 +43,15 @@ namespace QLThuoc
                 string maThuoc = t.getMaThuoc();
                 combo.Items.Add(maThuoc);
             }
-
-            this.Hide();
             frmPhieuNhap.Show();
+        }
+
+        private void chiTiếtPhiếuNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChiTietPhieuNhap frmChiTiet = new frmChiTietPhieuNhap();
+            frmChiTiet.ChiTietLoad(sender, e);
+            frmChiTiet.dgvChiTiet.ReadOnly = true;
+            frmChiTiet.Show();
         }
     }
 }

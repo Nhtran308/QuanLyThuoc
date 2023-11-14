@@ -11,10 +11,10 @@ namespace QLThuoc
         [STAThread]
         static void Main()
         {
-            DataHelper.server = "NHAT\\SQLEXPRESS";
-            DataHelper.data = "QuanLyThuoc";
-            DataHelper.uid = "NhatTran";
-            DataHelper.password = "12345";
+            DataHelper.server = "localhost";
+            DataHelper.data = "demo";
+            DataHelper.uid = "sa";
+            DataHelper.password = "Abcdef@123";
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.

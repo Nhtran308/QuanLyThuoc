@@ -35,6 +35,8 @@
             thuốcToolStripMenuItem = new ToolStripMenuItem();
             nhàThuốcToolStripMenuItem = new ToolStripMenuItem();
             hóaĐơnToolStripMenuItem = new ToolStripMenuItem();
+            thêmPhiếuNhậpToolStripMenuItem = new ToolStripMenuItem();
+            chiTiếtPhiếuNhậpToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -67,34 +69,50 @@
             // 
             nhàThuốcToolStripMenuItem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             nhàThuốcToolStripMenuItem.Name = "nhàThuốcToolStripMenuItem";
-            nhàThuốcToolStripMenuItem.Size = new Size(108, 27);
-            nhàThuốcToolStripMenuItem.Text = "Nhà Thuốc";
+            nhàThuốcToolStripMenuItem.Size = new Size(131, 27);
+            nhàThuốcToolStripMenuItem.Text = "Nhà cung cấp";
             nhàThuốcToolStripMenuItem.Click += nhàThuốcToolStripMenuItem_Click;
             // 
             // hóaĐơnToolStripMenuItem
             // 
+            hóaĐơnToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { thêmPhiếuNhậpToolStripMenuItem, chiTiếtPhiếuNhậpToolStripMenuItem });
             hóaĐơnToolStripMenuItem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             hóaĐơnToolStripMenuItem.Name = "hóaĐơnToolStripMenuItem";
-            hóaĐơnToolStripMenuItem.Size = new Size(114, 27);
-            hóaĐơnToolStripMenuItem.Text = "Phiếu Nhập";
-            hóaĐơnToolStripMenuItem.Click += hóaĐơnToolStripMenuItem_Click;
+            hóaĐơnToolStripMenuItem.Size = new Size(111, 27);
+            hóaĐơnToolStripMenuItem.Text = "Phiếu nhập";
+            // 
+            // thêmPhiếuNhậpToolStripMenuItem
+            // 
+            thêmPhiếuNhậpToolStripMenuItem.Name = "thêmPhiếuNhậpToolStripMenuItem";
+            thêmPhiếuNhậpToolStripMenuItem.Size = new Size(241, 28);
+            thêmPhiếuNhậpToolStripMenuItem.Text = "Thêm phiếu nhập";
+            thêmPhiếuNhậpToolStripMenuItem.Click += thêmPhiếuNhậpToolStripMenuItem_Click;
+            // 
+            // chiTiếtPhiếuNhậpToolStripMenuItem
+            // 
+            chiTiếtPhiếuNhậpToolStripMenuItem.Name = "chiTiếtPhiếuNhậpToolStripMenuItem";
+            chiTiếtPhiếuNhậpToolStripMenuItem.Size = new Size(241, 28);
+            chiTiếtPhiếuNhậpToolStripMenuItem.Text = "Chi tiết phiếu nhập";
+            chiTiếtPhiếuNhậpToolStripMenuItem.Click += chiTiếtPhiếuNhậpToolStripMenuItem_Click;
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(0, 169);
+            label1.Location = new Point(0, 31);
             label1.Name = "label1";
             label1.Size = new Size(571, 81);
             label1.TabIndex = 2;
             label1.Text = "Nhật Trưởng Thành";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.GradientActiveCaption;
+            BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(571, 453);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
@@ -103,6 +121,7 @@
             Name = "frmMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản Lý Thuốc";
+            WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -117,5 +136,7 @@
         private ToolStripMenuItem nhàThuốcToolStripMenuItem;
         private ToolStripMenuItem hóaĐơnToolStripMenuItem;
         private Label label1;
+        private ToolStripMenuItem thêmPhiếuNhậpToolStripMenuItem;
+        private ToolStripMenuItem chiTiếtPhiếuNhậpToolStripMenuItem;
     }
 }

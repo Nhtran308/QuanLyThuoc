@@ -20,9 +20,10 @@ namespace QLThuoc.View
         {
             InitializeComponent();
             nccController = new NhaCungCapController();
+            this.KeyPreview = true;
         }
 
-        public void btnNCCLoad_Click(object sender, EventArgs e)
+        public void NCCLoad(object sender, EventArgs e)
         {
             dgvNhaCungCap.Rows.Clear();
             lstNhaCungCap = nccController.NCCLoad();
@@ -51,7 +52,7 @@ namespace QLThuoc.View
             nhacungcap.setTenNhaCungCap(txtTenNCC.Text);
             nhacungcap.setDiaChiNhaCungCap(txtDiaChiNCC.Text);
             nccController.NCCInsert(nhacungcap);
-            btnNCCLoad_Click(sender, e);
+            NCCLoad(sender, e);
         }
 
         private void btnNCCEdit_Click(object sender, EventArgs e)
@@ -69,7 +70,7 @@ namespace QLThuoc.View
             nhacungcap.setTenNhaCungCap(txtTenNCC.Text);
             nhacungcap.setDiaChiNhaCungCap(txtDiaChiNCC.Text);
             nccController.NCCEdit(nhacungcap);
-            btnNCCLoad_Click(sender, e);
+            NCCLoad(sender, e);
         }
 
         private void btnNCCDelete_Click(object sender, EventArgs e)
@@ -85,14 +86,14 @@ namespace QLThuoc.View
             txtMaNCC.Clear();
             txtTenNCC.Clear();
             txtDiaChiNCC.Clear();
-            btnNCCLoad_Click(sender, e);
+            NCCLoad(sender, e);
         }
 
         private void btnNCCFind_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaNCC.Text))
             {
-                MessageBox.Show("Nhập mã thuốc để tìm");
+                MessageBox.Show("Nhập mã nhà cung cấp để tìm");
                 txtMaNCC.Focus();
                 return;
             }
@@ -107,18 +108,9 @@ namespace QLThuoc.View
             }
         }
 
-        private void btnNCCCancel_Click(object sender, EventArgs e)
-        {
-            txtMaNCC.Clear();
-            txtTenNCC.Clear();
-            txtDiaChiNCC.Clear();
-        }
-
         private void btnNCCExit_Click(object sender, EventArgs e)
         {
-            frmMenu frmMenu = new frmMenu();
             this.Close();
-            frmMenu.ShowDialog();
         }
 
         private void dgvNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -129,6 +121,17 @@ namespace QLThuoc.View
                 txtMaNCC.Text = row.Cells[0].Value.ToString();
                 txtTenNCC.Text = row.Cells[1].Value.ToString();
                 txtDiaChiNCC.Text = row.Cells[2].Value.ToString();
+            }
+        }
+
+        private void frmNhaCungCap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtMaNCC.Clear();
+                txtTenNCC.Clear();
+                txtDiaChiNCC.Clear();
+                NCCLoad(sender, e);
             }
         }
     }

@@ -26,30 +26,26 @@ namespace QLThuoc.View
         {
             InitializeComponent();
             pnController = new PhieuNhapController();
+            txtMaNhaCungCap.Enabled = true;
+            this.KeyPreview = true;
         }
 
-        private void btnPhieuNhapSave_Click(object sender, EventArgs e)
+        private void btnPhieuNhapCreate_Click(object sender, EventArgs e)
         {
-            pnController.CTPNInsert(txtMaPhieu, dgvPhieuNhap);
-        }
-
-        private void btnPhieuNhapCancel_Click(object sender, EventArgs e)
-        {
-            txtMaPhieu.Clear();
-            txtMaHopDong.Clear();
-            txtMaNhaCungCap.Clear();
-            txtNhaCungCap.Clear();
-            txtNguoiNhap.Clear();
-            txtNgayHopDong.Clear();
-            txtNgayNhap.Clear();
-            dgvPhieuNhap.Rows.Clear();
+            if (string.IsNullOrEmpty(txtMaPhieu.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin");
+                txtMaPhieu.Focus();
+            }
+            else
+            {
+                pnController.CTPNInsert(txtMaPhieu, txtMaHopDong, txtMaNhaCungCap, txtNhaCungCap, txtNguoiNhap, txtNgayHopDong, txtNgayNhap, dgvPhieuNhap);
+            }
         }
 
         private void btnPhieuNhapExit_Click(object sender, EventArgs e)
         {
-            frmMenu frmMenu = new frmMenu();
             this.Close();
-            frmMenu.ShowDialog();
         }
 
         private void dgvPhieuNhap_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -65,9 +61,31 @@ namespace QLThuoc.View
             }
         }
 
+        private void txtMaNhaCungCap_TextChanged(object sender, EventArgs e)
+        {
+            PhieuNhapController.HienThiNhaCungCap(txtMaNhaCungCap, txtNhaCungCap);
+        }
+
         private void txtMaPhieu_TextChanged(object sender, EventArgs e)
         {
             PhieuNhapController.HienThiPhieuNhap(txtMaPhieu, txtMaHopDong, txtMaNhaCungCap, txtNhaCungCap, txtNguoiNhap, txtNgayHopDong, txtNgayNhap);
         }
+
+        private void frmPhieuNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtMaPhieu.Clear();
+                txtMaHopDong.Clear();
+                txtMaNhaCungCap.Clear();
+                txtNhaCungCap.Clear();
+                txtNguoiNhap.Clear();
+                txtNgayHopDong.Clear();
+                txtNgayNhap.Clear();
+                dgvPhieuNhap.Rows.Clear();
+            }
+        }
+
+      
     }
 }

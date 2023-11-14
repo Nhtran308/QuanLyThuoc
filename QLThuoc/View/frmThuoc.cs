@@ -21,9 +21,10 @@ namespace QLThuoc.View
         {
             InitializeComponent();
             thuocController = new ThuocController();
+            this.KeyPreview = true;
         }
 
-        public void btnThuocLoad_Click(object sender, EventArgs e)
+        public void ThuocLoad(object sender, EventArgs e)
         {
             dgvThuoc.Rows.Clear();
             lstThuoc = thuocController.ThuocLoad();
@@ -58,7 +59,7 @@ namespace QLThuoc.View
             thuoc.setSoLuong(int.Parse(txtSoLuong.Text));
             thuoc.setDonGia(float.Parse(txtDonGia.Text));
             thuocController.ThuocInsert(thuoc);
-            btnThuocLoad_Click(sender, e);
+            ThuocLoad(sender, e);
         }
 
         private void btnThuocEdit_Click(object sender, EventArgs e)
@@ -85,14 +86,14 @@ namespace QLThuoc.View
             thuoc.setDonGia(float.Parse(txtDonGia.Text));
             thuoc.setMaThuoc(txtMaThuoc.Text);
             thuocController.ThuocEdit(thuoc);
-            btnThuocLoad_Click(sender, e);
+            ThuocLoad(sender, e);
         }
 
         private void btnThuocDelete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaThuoc.Text))
             {
-                MessageBox.Show("Không thể xóa");
+                MessageBox.Show("Không có thông tin để xóa");
                 return;
             }
             Thuoc thuoc = new Thuoc();
@@ -103,7 +104,7 @@ namespace QLThuoc.View
             txtDonViTinh.Clear();
             txtSoLuong.Clear();
             txtDonGia.Clear();
-            btnThuocLoad_Click(sender, e);
+            ThuocLoad(sender, e);
         }
 
         private void btnThuocFind_Click(object sender, EventArgs e)
@@ -125,20 +126,9 @@ namespace QLThuoc.View
             }
         }
 
-        private void btnThuocCancel_Click(object sender, EventArgs e)
-        {
-            txtMaThuoc.Clear();
-            txtTenThuoc.Clear();
-            txtDonViTinh.Clear();
-            txtSoLuong.Clear();
-            txtDonGia.Clear();
-        }
-
         private void btnThuocExit_Click(object sender, EventArgs e)
         {
-            frmMenu frmMenu = new frmMenu();
             this.Close();
-            frmMenu.ShowDialog();
         }
 
         private void dgvThuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -152,6 +142,20 @@ namespace QLThuoc.View
                 txtSoLuong.Text = row.Cells[3].Value.ToString();
                 txtDonGia.Text = row.Cells[4].Value.ToString();
             }
+        }
+
+        private void frmThuoc_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtMaThuoc.Clear();
+                txtTenThuoc.Clear();
+                txtDonViTinh.Clear();
+                txtSoLuong.Clear();
+                txtDonGia.Clear();
+                ThuocLoad(sender, e);
+            }
+
         }
     }
 }
