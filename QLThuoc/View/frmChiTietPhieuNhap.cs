@@ -66,5 +66,18 @@ namespace QLThuoc.View
                 ChiTietLoad(sender, e);
             }
         }
+
+        private void dgvChiTiet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ChiTietController.HienThiCombobox(dgvChiTiet);
+        }
+
+        private void dgvChiTiet_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvChiTiet.IsCurrentCellDirty)
+            {
+                dgvChiTiet.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
     }
 }

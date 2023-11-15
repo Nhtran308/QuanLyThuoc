@@ -2,6 +2,7 @@ using QLThuoc.Controller;
 using QLThuoc.Model;
 using QLThuoc.View;
 using System.Collections.Generic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace QLThuoc
 {
@@ -49,8 +50,14 @@ namespace QLThuoc
         private void chiTiếtPhiếuNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChiTietPhieuNhap frmChiTiet = new frmChiTietPhieuNhap();
-            frmChiTiet.ChiTietLoad(sender, e);
-            frmChiTiet.dgvChiTiet.ReadOnly = true;
+            DataGridViewComboBoxColumn combo = (DataGridViewComboBoxColumn)frmChiTiet.dgvChiTiet.Columns["maPhieu"];
+            ChiTietController ctController = new ChiTietController();
+            List<ChiTietPhieuNhap> ct = ctController.Combobox();
+            foreach (ChiTietPhieuNhap ctpn in ct)
+            {
+                string maPhieu = ctpn.getMaPhieuNhap();
+                combo.Items.Add(maPhieu);
+            }
             frmChiTiet.Show();
         }
     }

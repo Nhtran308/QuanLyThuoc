@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             dgvChiTiet = new DataGridView();
-            maPhieu = new DataGridViewTextBoxColumn();
+            maPhieu = new DataGridViewComboBoxColumn();
             maThuoc = new DataGridViewTextBoxColumn();
             soLuong = new DataGridViewTextBoxColumn();
             donGia = new DataGridViewTextBoxColumn();
@@ -50,12 +50,16 @@
             dgvChiTiet.RowTemplate.Height = 29;
             dgvChiTiet.Size = new Size(518, 188);
             dgvChiTiet.TabIndex = 0;
+            dgvChiTiet.CellValueChanged += dgvChiTiet_CellValueChanged;
+            dgvChiTiet.CurrentCellDirtyStateChanged += dgvChiTiet_CurrentCellDirtyStateChanged;
             // 
             // maPhieu
             // 
             maPhieu.HeaderText = "Mã phiếu";
             maPhieu.MinimumWidth = 6;
             maPhieu.Name = "maPhieu";
+            maPhieu.Resizable = DataGridViewTriState.True;
+            maPhieu.SortMode = DataGridViewColumnSortMode.Automatic;
             maPhieu.Width = 125;
             // 
             // maThuoc
@@ -130,6 +134,7 @@
             Controls.Add(dgvChiTiet);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "frmChiTietPhieuNhap";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Chi tiết phiếu nhập";
             KeyDown += frmChiTietPhieuNhap_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvChiTiet).EndInit();
@@ -142,11 +147,11 @@
         public DataGridView dgvChiTiet;
         private Label label1;
         private Button btnCTXuat;
-        private DataGridViewTextBoxColumn maPhieu;
+        private TextBox txtTim;
+        private Button btnTim;
+        private DataGridViewComboBoxColumn maPhieu;
         private DataGridViewTextBoxColumn maThuoc;
         private DataGridViewTextBoxColumn soLuong;
         private DataGridViewTextBoxColumn donGia;
-        private TextBox txtTim;
-        private Button btnTim;
     }
 }

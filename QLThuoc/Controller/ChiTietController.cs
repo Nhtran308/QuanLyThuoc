@@ -96,6 +96,51 @@ namespace QLThuoc.Controller
             return lstCTPN;
         }
 
+        public List<ChiTietPhieuNhap> Combobox()
+        {
+            lstCTPN.Clear();
+            SqlConnection conn = DataHelper.getConnection();
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT MaPhieu FROM ChiTietPhieuNhap", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string maPhieu = reader["MaPhieu"].ToString();
+                    ChiTietPhieuNhap chitiet = new ChiTietPhieuNhap(maPhieu);
+                    lstCTPN.Add(chitiet);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiển thị không thành công", "Thông báo", MessageBoxButtons.OK);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return lstCTPN;
+        }
+
+        public static void HienThiCombobox(DataGridView dgvChiTiet)
+        {
+            SqlConnection conn = DataHelper.getConnection();
+            for (int i = 0; i < dgvChiTiet.Rows.Count; i++)
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT DISTINCT MaPhieu, MaThuoc, SoLuong, DonGia FROM ChiTietPhieuNhap WHERE MaPhieu = N'" + dgvChiTiet.Rows[i].Cells[0].Value + "'", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    dgvChiTiet.Rows[i].Cells[1].Value = reader["MaThuoc"].ToString();
+                    dgvChiTiet.Rows[i].Cells[2].Value = reader["SoLuong"].ToString();
+                    dgvChiTiet.Rows[i].Cells[3].Value = reader["DonGia"].ToString();
+                }
+                conn.Close();
+            }
+        }
         public async Task Export(DataGridView dgvChiTiet)
         {
             using (SaveFileDialog sdf = new SaveFileDialog() { Filter = "Text Documents|*.txt", ValidateNames = true })

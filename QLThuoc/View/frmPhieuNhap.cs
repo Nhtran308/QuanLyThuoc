@@ -86,18 +86,17 @@ namespace QLThuoc.View
             }
         }
 
-        private void dgvPhieuNhap_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvPhieuNhap.SelectedRows.Count > 0)
-            {
-                
-            }
-        }
-
         private void dgvPhieuNhap_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             frmChiTietPhieuNhap frmChiTiet = new frmChiTietPhieuNhap();
-            frmChiTiet.ChiTietLoad(sender, e);
+            DataGridViewComboBoxColumn combo = (DataGridViewComboBoxColumn)frmChiTiet.dgvChiTiet.Columns["maPhieu"];
+            ChiTietController ctController = new ChiTietController();
+            List<ChiTietPhieuNhap> ct = ctController.Combobox();
+            foreach (ChiTietPhieuNhap ctpn in ct)
+            {
+                string maPhieu = ctpn.getMaPhieuNhap();
+                combo.Items.Add(maPhieu);
+            }
             frmChiTiet.ShowDialog();
             
         }

@@ -66,8 +66,6 @@ namespace QLThuoc.Controller
                 for (int i = 0; i < dgvPhieuNhap.Rows.Count-1; i++)
                 {
                     conn.Open();
-
-
                 SqlCommand cmd = new SqlCommand("INSERT INTO PhieuNhap(MaPhieu, MaHopDong, MaNhaCungCap, TenNhaCungCap, NguoiNhap, NgayHopDong, NgayNhap) " +
                     "VALUES ('" + txtMaPhieu.Text + "','" 
                     + txtMaHopDong.Text + "','"
@@ -82,8 +80,6 @@ namespace QLThuoc.Controller
                     "(SELECT MaThuoc FROM Thuoc WHERE MaThuoc = '" + dgvPhieuNhap.Rows[i].Cells[0].Value + "'), " +
                     "'" + dgvPhieuNhap.Rows[i].Cells[3].Value + "', " +
                     "'" + dgvPhieuNhap.Rows[i].Cells[4].Value + "')", conn);
-
-
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }

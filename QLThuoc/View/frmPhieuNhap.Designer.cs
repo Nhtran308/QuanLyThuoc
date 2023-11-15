@@ -75,7 +75,6 @@
             dgvPhieuNhap.RowTemplate.Height = 29;
             dgvPhieuNhap.Size = new Size(783, 185);
             dgvPhieuNhap.TabIndex = 19;
-            dgvPhieuNhap.CellContentDoubleClick += dgvPhieuNhap_CellContentDoubleClick;
             dgvPhieuNhap.CellDoubleClick += dgvPhieuNhap_CellDoubleClick;
             dgvPhieuNhap.CellValueChanged += dgvPhieuNhap_CellValueChanged;
             dgvPhieuNhap.CurrentCellDirtyStateChanged += dgvPhieuNhap_CurrentCellDirtyStateChanged;
