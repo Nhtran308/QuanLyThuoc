@@ -16,6 +16,7 @@ namespace QLThuoc.Controller
 {
     internal class ChiTietController
     {
+
         List<ChiTietPhieuNhap> lstCTPN;
 
         public ChiTietController()
@@ -38,8 +39,49 @@ namespace QLThuoc.Controller
                     string maThuoc = (string)reader["MaThuoc"];
                     int soLuong = (int)reader["SoLuong"];
                     float donGia = float.Parse(reader["DonGia"].ToString());
-                    ChiTietPhieuNhap ct = new ChiTietPhieuNhap(maThuoc, maThuoc, soLuong, donGia);
+                    ChiTietPhieuNhap ct = new ChiTietPhieuNhap(maPhieu, maThuoc, soLuong, donGia);
                     lstCTPN.Add(ct);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiển thị không thành công", "Thông báo", MessageBoxButtons.OK);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lstCTPN;
+        }
+
+        public List<ChiTietPhieuNhap> FindCTPN(ChiTietPhieuNhap chitiet)
+        {
+            lstCTPN.Clear();
+            SqlConnection conn = DataHelper.getConnection();
+            try
+            {
+                int count = 0;
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("USE demo SELECT MaPhieu, MaThuoc, SoLuong, DonGia FROM ChiTietPhieuNhap WHERE MaPhieu = '" + chitiet.getMaPhieuNhap() + "';", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string maPhieu = (string)reader["MaPhieu"];
+                    string maThuoc = (string)reader["MaThuoc"];
+                    int soLuong = (int)reader["SoLuong"];
+                    float donGia = float.Parse(reader["DonGia"].ToString());
+                    ChiTietPhieuNhap ct = new ChiTietPhieuNhap(maPhieu, maThuoc, soLuong, donGia);
+                    lstCTPN.Add(ct);
+                    count++;
+                }
+                if (count > 0)
+                {
+                    return lstCTPN;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy!", "Thông báo!", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex)
@@ -64,6 +106,10 @@ namespace QLThuoc.Controller
                     {
                         foreach (DataGridViewRow row in dgvChiTiet.Rows)
                         {
+                            if(row.Cells[0].Value == null)
+                            {
+                                break;
+                            }
                             await tw.WriteLineAsync($"Mã phiếu nhập: {row.Cells[0].Value}" +
                                 $"\nMã thuốc: {row.Cells[1].Value}" +
                                 $"\nSố lượng: {row.Cells[2].Value}" +

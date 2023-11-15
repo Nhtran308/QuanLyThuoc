@@ -14,7 +14,13 @@ namespace QLThuoc.Model
         private float donGia;
 
 
-        public ChiTietPhieuNhap(string maPhieuNhap) { }
+        public ChiTietPhieuNhap()
+        {
+
+        }
+        public ChiTietPhieuNhap(string maPhieuNhap) {
+            this.maPhieuNhap = maPhieuNhap;
+        }
 
         public ChiTietPhieuNhap(string maPhieuNhap, string maThuoc, int soLuong, float donGia)
         {
@@ -23,6 +29,7 @@ namespace QLThuoc.Model
             this.soLuong = soLuong;
             this.donGia = donGia;
         }
+
 
         public string getMaPhieuNhap() { return maPhieuNhap; }
         public string getMaThuoc() { return maThuoc; }

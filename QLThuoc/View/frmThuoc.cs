@@ -155,7 +155,6 @@ namespace QLThuoc.View
                 txtDonGia.Clear();
                 ThuocLoad(sender, e);
             }
-
         }
     }
 }

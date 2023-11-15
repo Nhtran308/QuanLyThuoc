@@ -34,8 +34,9 @@
             soLuong = new DataGridViewTextBoxColumn();
             donGia = new DataGridViewTextBoxColumn();
             label1 = new Label();
-            btnChiTietExit = new Button();
             btnCTXuat = new Button();
+            txtTim = new TextBox();
+            btnTim = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvChiTiet).BeginInit();
             SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             // 
             dgvChiTiet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvChiTiet.Columns.AddRange(new DataGridViewColumn[] { maPhieu, maThuoc, soLuong, donGia });
-            dgvChiTiet.Location = new Point(12, 88);
+            dgvChiTiet.Location = new Point(13, 128);
             dgvChiTiet.Name = "dgvChiTiet";
             dgvChiTiet.RowHeadersWidth = 51;
             dgvChiTiet.RowTemplate.Height = 29;
@@ -88,19 +89,9 @@
             label1.TabIndex = 1;
             label1.Text = "Chi Tiết Phiếu Nhập";
             // 
-            // btnChiTietExit
-            // 
-            btnChiTietExit.Location = new Point(437, 298);
-            btnChiTietExit.Name = "btnChiTietExit";
-            btnChiTietExit.Size = new Size(94, 29);
-            btnChiTietExit.TabIndex = 30;
-            btnChiTietExit.Text = "Thoát";
-            btnChiTietExit.UseVisualStyleBackColor = true;
-            btnChiTietExit.Click += btnChiTietExit_Click;
-            // 
             // btnCTXuat
             // 
-            btnCTXuat.Location = new Point(305, 298);
+            btnCTXuat.Location = new Point(437, 331);
             btnCTXuat.Name = "btnCTXuat";
             btnCTXuat.Size = new Size(94, 29);
             btnCTXuat.TabIndex = 31;
@@ -108,20 +99,39 @@
             btnCTXuat.UseVisualStyleBackColor = true;
             btnCTXuat.Click += btnCTXuat_Click;
             // 
+            // txtTim
+            // 
+            txtTim.Location = new Point(304, 86);
+            txtTim.Name = "txtTim";
+            txtTim.PlaceholderText = "Tìm";
+            txtTim.Size = new Size(113, 27);
+            txtTim.TabIndex = 32;
+            // 
+            // btnTim
+            // 
+            btnTim.Location = new Point(437, 84);
+            btnTim.Name = "btnTim";
+            btnTim.Size = new Size(94, 29);
+            btnTim.TabIndex = 33;
+            btnTim.Text = "Tìm";
+            btnTim.UseVisualStyleBackColor = true;
+            btnTim.Click += btnTim_Click;
+            // 
             // frmChiTietPhieuNhap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(543, 339);
+            BackColor = SystemColors.GradientActiveCaption;
+            ClientSize = new Size(543, 372);
+            Controls.Add(btnTim);
+            Controls.Add(txtTim);
             Controls.Add(btnCTXuat);
-            Controls.Add(btnChiTietExit);
             Controls.Add(label1);
             Controls.Add(dgvChiTiet);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "frmChiTietPhieuNhap";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Chi tiết phiếu nhập";
+            KeyDown += frmChiTietPhieuNhap_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dgvChiTiet).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -131,11 +141,12 @@
 
         public DataGridView dgvChiTiet;
         private Label label1;
-        private Button btnChiTietExit;
         private Button btnCTXuat;
         private DataGridViewTextBoxColumn maPhieu;
         private DataGridViewTextBoxColumn maThuoc;
         private DataGridViewTextBoxColumn soLuong;
         private DataGridViewTextBoxColumn donGia;
+        private TextBox txtTim;
+        private Button btnTim;
     }
 }
