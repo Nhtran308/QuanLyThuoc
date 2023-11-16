@@ -1,14 +1,5 @@
 ﻿using QLThuoc.Controller;
 using QLThuoc.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace QLThuoc.View
 {
@@ -20,9 +11,10 @@ namespace QLThuoc.View
         {
             InitializeComponent();
             nccController = new NhaCungCapController();
-            this.KeyPreview = true;
+            KeyPreview = true;
         }
 
+        //Hàm hiển thị nhà cung cấp
         public void NCCLoad(object sender, EventArgs e)
         {
             dgvNhaCungCap.Rows.Clear();
@@ -34,6 +26,7 @@ namespace QLThuoc.View
             }
         }
 
+        //Nút thêm nhà cung cấp
         private void btnNCCAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaNCC.Text)
@@ -55,6 +48,7 @@ namespace QLThuoc.View
             NCCLoad(sender, e);
         }
 
+        //Nút sửa thông tin nhà cung cấp
         private void btnNCCEdit_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaNCC.Text)
@@ -73,6 +67,7 @@ namespace QLThuoc.View
             NCCLoad(sender, e);
         }
 
+        //Nút xóa nhà cung cấp
         private void btnNCCDelete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaNCC.Text))
@@ -89,6 +84,7 @@ namespace QLThuoc.View
             NCCLoad(sender, e);
         }
 
+        //Nút tìm nhà cung cấp
         private void btnNCCFind_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaNCC.Text))
@@ -108,22 +104,25 @@ namespace QLThuoc.View
             }
         }
 
+        //Nút thoát
         private void btnNCCExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
+        //Hàm hiển thị dữ liệu lên textbox khi bấm vào ô datagridview
         private void dgvNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = this.dgvNhaCungCap.Rows[e.RowIndex];
+                DataGridViewRow row = dgvNhaCungCap.Rows[e.RowIndex];
                 txtMaNCC.Text = row.Cells[0].Value.ToString();
                 txtTenNCC.Text = row.Cells[1].Value.ToString();
                 txtDiaChiNCC.Text = row.Cells[2].Value.ToString();
             }
         }
 
+        //Khi bấm nút Esc sẽ xóa dữ liệu hiển thị trên txt và dgv
         private void frmNhaCungCap_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

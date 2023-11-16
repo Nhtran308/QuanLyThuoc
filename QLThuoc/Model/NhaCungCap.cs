@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace QLThuoc.Model
+﻿namespace QLThuoc.Model
 {
     internal class NhaCungCap
     {
@@ -13,8 +7,8 @@ namespace QLThuoc.Model
         private string diaChiNhaCungCap;
 
         public NhaCungCap() 
-        { 
-
+        {
+            
         }
 
         public NhaCungCap(string maNhaCungCap, string tenNhaCungCap, string diaChiNhaCungCap)

@@ -1,21 +1,17 @@
 using QLThuoc.Controller;
 using QLThuoc.Model;
 using QLThuoc.View;
-using System.Collections.Generic;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace QLThuoc
 {
     public partial class frmMenu : Form
     {
-        ThuocController thuocController;
-        List<Thuoc> lstThuoc;
         public frmMenu()
         {
             InitializeComponent();
-            thuocController = new ThuocController();
         }
 
+        //Hiển thị trang quản lý thuốc
         private void thuốcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmThuoc frmthuoc = new frmThuoc();
@@ -24,6 +20,7 @@ namespace QLThuoc
             frmthuoc.Show();
         }
 
+        //Hiển thị trang nhà cung cấp
         private void nhàThuốcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmNhaCungCap frmnhacungcap = new frmNhaCungCap();
@@ -32,6 +29,7 @@ namespace QLThuoc
             frmnhacungcap.Show();
         }
 
+        //Hiển thị trang thêm phiếu nhập
         private void thêmPhiếuNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPhieuNhap frmPhieuNhap = new frmPhieuNhap();
@@ -47,6 +45,7 @@ namespace QLThuoc
             frmPhieuNhap.Show();
         }
 
+        //Hiển thị trang chi tiết phiếu nhập
         private void chiTiếtPhiếuNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChiTietPhieuNhap frmChiTiet = new frmChiTietPhieuNhap();

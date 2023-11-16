@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace QLThuoc.Model
+﻿namespace QLThuoc.Model
 {
     internal class PhieuNhap
     {
@@ -17,6 +10,11 @@ namespace QLThuoc.Model
         private DateTime ngayHopDong;
         private DateTime ngayNhap;
 
+        public PhieuNhap()
+        {
+
+        }
+
         public PhieuNhap (string maPhieuNhap, string maHopDong, NhaCungCap maNhaCungCap, NhaCungCap tenNhaCungCap, string tenNguoiNhap, DateTime ngayHopDong, DateTime ngayNhap)
         {
             this.maPhieuNhap = maPhieuNhap;
@@ -26,11 +24,6 @@ namespace QLThuoc.Model
             this.tenNguoiNhap = tenNguoiNhap;
             this.ngayHopDong = ngayHopDong;
             this.ngayNhap = ngayNhap;
-        }
-
-        public PhieuNhap ()
-        {
-
         }
 
         public string getMaPhieuNhap ( ) { return maPhieuNhap; }

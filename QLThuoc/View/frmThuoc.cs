@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using QLThuoc.Controller;
+﻿using QLThuoc.Controller;
 using QLThuoc.Model;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace QLThuoc.View
 {
@@ -24,6 +14,7 @@ namespace QLThuoc.View
             this.KeyPreview = true;
         }
 
+        //Hàm hiển thị thuốc
         public void ThuocLoad(object sender, EventArgs e)
         {
             dgvThuoc.Rows.Clear();
@@ -35,6 +26,7 @@ namespace QLThuoc.View
             }
         }
 
+        //Nút thêm thuốc
         private void btnThuocAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaThuoc.Text)
@@ -62,6 +54,7 @@ namespace QLThuoc.View
             ThuocLoad(sender, e);
         }
 
+        //Nút sửa thông tin thuốc
         private void btnThuocEdit_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaThuoc.Text)
@@ -89,6 +82,7 @@ namespace QLThuoc.View
             ThuocLoad(sender, e);
         }
 
+        //Nút xóa thuốc
         private void btnThuocDelete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaThuoc.Text))
@@ -107,6 +101,7 @@ namespace QLThuoc.View
             ThuocLoad(sender, e);
         }
 
+        //Nút tìm thuốc
         private void btnThuocFind_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaThuoc.Text))
@@ -126,11 +121,13 @@ namespace QLThuoc.View
             }
         }
 
+        //Nút thoát
         private void btnThuocExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Nút hiển thị giá trị lên textbox khi chọn ô datagridview
         private void dgvThuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -144,6 +141,7 @@ namespace QLThuoc.View
             }
         }
 
+        //Khi bấm Esc dữ liệu hiển thị trên textbox và datagridview bị xóa
         private void frmThuoc_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

@@ -1,29 +1,18 @@
-﻿using Microsoft.VisualBasic;
-using QLThuoc.Model;
+﻿using QLThuoc.Model;
 using QLThuoc.Util;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QLThuoc.Controller
 {
     internal class PhieuNhapController
     {
-        List<PhieuNhap> lstPhieuNhap;
         List<Thuoc> lstThuoc;
-        PhieuNhapController pnController;
-        public PhieuNhapController () 
+        public PhieuNhapController()
         {
-            lstPhieuNhap = new List<PhieuNhap>();
             lstThuoc = new List<Thuoc>();
         }
 
+        //Hàm lấy danh sách Mã thuốc
         public List<Thuoc> Combobox()
         {
             lstThuoc.Clear();
@@ -31,117 +20,98 @@ namespace QLThuoc.Controller
             try
             {
                 conn.Open();
+
                 SqlCommand cmd = new SqlCommand("SELECT MaThuoc FROM Thuoc", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string maThuoc = reader["MaThuoc"].ToString();
+                    string maThuoc = (string)reader["MaThuoc"];
                     Thuoc thuoc = new Thuoc(maThuoc);
                     lstThuoc.Add(thuoc);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiển thị không thành công", "Thông báo", MessageBoxButtons.OK);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            catch (Exception) { MessageBox.Show("Hiển thị không thành công", "Thông báo", MessageBoxButtons.OK); }
+            finally { conn.Close(); }
             return lstThuoc;
         }
 
-        public bool CTPNInsert(System.Windows.Forms.TextBox txtMaPhieu, 
-            System.Windows.Forms.TextBox txtMaHopDong, 
-            System.Windows.Forms.TextBox txtMaNhaCungCap, 
-            System.Windows.Forms.TextBox txtNhaCungCap, 
-            System.Windows.Forms.TextBox txtNguoiNhap, 
-            System.Windows.Forms.TextBox txtNgayHopDong, 
-            System.Windows.Forms.TextBox txtNgayNhap, 
-            DataGridView dgvPhieuNhap)
+        //Hàm thêm dữ liệu vào 2 bảng PhieuNhap và ChiTietHangHoa
+        public bool CTPNInsert(TextBox txtMaPhieu, TextBox txtMaHopDong, TextBox txtMaNhaCungCap, TextBox txtNhaCungCap,
+            TextBox txtNguoiNhap, TextBox txtNgayHopDong, TextBox txtNgayNhap, DataGridView dgvPhieuNhap)
         {
             SqlConnection conn = DataHelper.getConnection();
             try
             {
-                for (int i = 0; i < dgvPhieuNhap.Rows.Count-1; i++)
+                for (int i = 0; i < dgvPhieuNhap.Rows.Count - 1; i++)
                 {
                     conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO PhieuNhap(MaPhieu, MaHopDong, MaNhaCungCap, TenNhaCungCap, NguoiNhap, NgayHopDong, NgayNhap) " +
-                    "VALUES ('" + txtMaPhieu.Text + "','" 
-                    + txtMaHopDong.Text + "','"
-                    + txtMaNhaCungCap.Text + "',N'"
-                    + txtNhaCungCap.Text + "',N'"
-                    + txtNguoiNhap.Text + "','"
-                    + txtNgayHopDong.Text + "','"
-                    + txtNgayNhap.Text + "') " +
-                    "INSERT INTO ChiTietPhieuNhap(MaPhieu, MaThuoc, SoLuong, DonGia) " +
-                    "VALUES (" +
-                    "(SELECT MaPhieu FROM PhieuNhap WHERE MaPhieu = '" + txtMaPhieu.Text + "'), " +
-                    "(SELECT MaThuoc FROM Thuoc WHERE MaThuoc = '" + dgvPhieuNhap.Rows[i].Cells[0].Value + "'), " +
-                    "'" + dgvPhieuNhap.Rows[i].Cells[3].Value + "', " +
-                    "'" + dgvPhieuNhap.Rows[i].Cells[4].Value + "')", conn);
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO PhieuNhap(MaPhieu, MaHopDong, MaNhaCungCap, TenNhaCungCap, NguoiNhap, NgayHopDong, NgayNhap) " +
+                        "VALUES ('" + txtMaPhieu.Text + "','"
+                        + txtMaHopDong.Text + "','"
+                        + txtMaNhaCungCap.Text + "',N'"
+                        + txtNhaCungCap.Text + "',N'"
+                        + txtNguoiNhap.Text + "','"
+                        + txtNgayHopDong.Text + "','"
+                        + txtNgayNhap.Text + "') " +
+                        "INSERT INTO ChiTietPhieuNhap(MaPhieu, MaThuoc, SoLuong, DonGia) " +
+                        "VALUES (" +
+                        "(SELECT MaPhieu FROM PhieuNhap WHERE MaPhieu = '" + txtMaPhieu.Text + "'), " +
+                        "(SELECT MaThuoc FROM Thuoc WHERE MaThuoc = '" + dgvPhieuNhap.Rows[i].Cells[0].Value + "'), " +
+                        "'" + dgvPhieuNhap.Rows[i].Cells[3].Value + "', " +
+                        "'" + dgvPhieuNhap.Rows[i].Cells[4].Value + "')", conn);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
                 MessageBox.Show("Tạo thành công", "Thông báo", MessageBoxButtons.OK);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Thông tin bị trùng hoặc không đúng", "Thông báo", MessageBoxButtons.OK);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            catch (Exception) { MessageBox.Show("Tạo thành công", "Thông báo", MessageBoxButtons.OK); }
+            finally { conn.Close(); }
             return false;
         }
 
+        //Hàm hiển thị dữ liệu dựa trên tham số truyền vào là giá trị của Combobox
         public static void HienThiCombobox(DataGridView dgvPhieuNhap)
         {
             SqlConnection conn = DataHelper.getConnection();
             for (int i = 0; i < dgvPhieuNhap.Rows.Count; i++)
             {
                 conn.Open();
-                
+
                 SqlCommand cmd = new SqlCommand("SELECT *, ('" + dgvPhieuNhap.Rows[i].Cells[3].Value + "' * DonGia) AS 'ThanhTien' FROM Thuoc WHERE MaThuoc = N'" + dgvPhieuNhap.Rows[i].Cells[0].Value + "'", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    dgvPhieuNhap.Rows[i].Cells[1].Value = reader["TenThuoc"].ToString();
-                    dgvPhieuNhap.Rows[i].Cells[2].Value = reader["DonViTinh"].ToString();
-                    dgvPhieuNhap.Rows[i].Cells[4].Value = reader["DonGia"].ToString();
-                    dgvPhieuNhap.Rows[i].Cells[5].Value = reader["ThanhTien"].ToString();
+                    dgvPhieuNhap.Rows[i].Cells[1].Value = (string)reader["TenThuoc"];
+                    dgvPhieuNhap.Rows[i].Cells[2].Value = (string)reader["DonViTinh"];
+                    dgvPhieuNhap.Rows[i].Cells[4].Value = (string)reader["DonGia"];
+                    dgvPhieuNhap.Rows[i].Cells[5].Value = (string)reader["ThanhTien"];
                 }
                 conn.Close();
             }
         }
 
-        public static void HienThiPhieuNhap(System.Windows.Forms.TextBox txtMaPhieu, 
-            System.Windows.Forms.TextBox txtMaHopDong,
-            System.Windows.Forms.TextBox txtMaNhaCungCap,
-            System.Windows.Forms.TextBox txtNhaCungCap,
-            System.Windows.Forms.TextBox txtNguoiNhap,
-            System.Windows.Forms.TextBox txtNgayHopDong,
-            System.Windows.Forms.TextBox txtNgayNhap
-            )
+        //Hàm lấy dữ liệu và truyền lên các ô textbox
+        public static void HienThiPhieuNhap(TextBox txtMaPhieu, TextBox txtMaHopDong, TextBox txtMaNhaCungCap, TextBox txtNhaCungCap,
+            TextBox txtNguoiNhap, TextBox txtNgayHopDong, TextBox txtNgayNhap)
         {
             SqlConnection conn = DataHelper.getConnection();
             conn.Open();
+
             SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuNhap WHERE MaPhieu = N'" + txtMaPhieu.Text + "'", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                txtMaPhieu.Text = reader["MaPhieu"].ToString();
-                txtMaHopDong.Text = reader["MaHopDong"].ToString();
-                txtMaNhaCungCap.Text = reader["MaNhaCungCap"].ToString();
-                txtNhaCungCap.Text = reader["TenNhaCungCap"].ToString();
-                txtNguoiNhap.Text = reader["NguoiNhap"].ToString();
+                txtMaPhieu.Text = (string)reader["MaPhieu"];
+                txtMaHopDong.Text = (string)reader["MaHopDong"];
+                txtMaNhaCungCap.Text = (string)reader["MaNhaCungCap"];
+                txtNhaCungCap.Text = (string)reader["TenNhaCungCap"];
+                txtNguoiNhap.Text = (string)reader["NguoiNhap"];
                 txtNgayHopDong.Text = Convert.ToDateTime(reader["NgayHopDong"]).ToString("dd/MM/yyyy");
                 txtNgayNhap.Text = Convert.ToDateTime(reader["NgayNhap"]).ToString("dd/MM/yyyy");
             }
-            else 
+            else
             {
-               
                 txtMaHopDong.Text = "";
                 txtMaNhaCungCap.Text = "";
                 txtNhaCungCap.Text = "";
@@ -152,7 +122,8 @@ namespace QLThuoc.Controller
             conn.Close();
         }
 
-        public static void HienThiNhaCungCap(System.Windows.Forms.TextBox txtMaNhaCungCap, System.Windows.Forms.TextBox txtNhaCungCap)
+        //Hiển thị Mã nhà cung cấp và tên nhà cung cấp khi nhập giá trị vào ô textbox
+        public static void HienThiNhaCungCap(TextBox txtMaNhaCungCap, TextBox txtNhaCungCap)
         {
             SqlConnection conn = DataHelper.getConnection();
             conn.Open();
@@ -160,8 +131,8 @@ namespace QLThuoc.Controller
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                txtMaNhaCungCap.Text = reader["MaNhaCungCap"].ToString();
-                txtNhaCungCap.Text = reader["TenNhaCungCap"].ToString();
+                txtMaNhaCungCap.Text = (string)reader["MaNhaCungCap"];
+                txtNhaCungCap.Text = (string)reader["TenNhaCungCap"];
             }
             conn.Close();
         }
