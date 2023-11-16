@@ -26,6 +26,14 @@ namespace QLThuoc.View
             else
             {
                 pnController.CTPNInsert(txtMaPhieu, txtMaHopDong, txtMaNhaCungCap, txtNhaCungCap, txtNguoiNhap, txtNgayHopDong, txtNgayNhap, dgvPhieuNhap);
+                txtMaPhieu.Clear();
+                txtMaHopDong.Clear();
+                txtMaNhaCungCap.Clear();
+                txtNhaCungCap.Clear();
+                txtNguoiNhap.Clear();
+                txtNgayHopDong.Clear();
+                txtNgayNhap.Clear();
+                dgvPhieuNhap.Rows.Clear();
             }
         }
 

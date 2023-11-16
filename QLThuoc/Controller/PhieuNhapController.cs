@@ -84,8 +84,8 @@ namespace QLThuoc.Controller
                 {
                     dgvPhieuNhap.Rows[i].Cells[1].Value = (string)reader["TenThuoc"];
                     dgvPhieuNhap.Rows[i].Cells[2].Value = (string)reader["DonViTinh"];
-                    dgvPhieuNhap.Rows[i].Cells[4].Value = (string)reader["DonGia"];
-                    dgvPhieuNhap.Rows[i].Cells[5].Value = (string)reader["ThanhTien"];
+                    dgvPhieuNhap.Rows[i].Cells[4].Value = reader["DonGia"].ToString();
+                    dgvPhieuNhap.Rows[i].Cells[5].Value = reader["ThanhTien"].ToString();
                 }
                 conn.Close();
             }
